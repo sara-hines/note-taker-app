@@ -1,7 +1,7 @@
 const express = require("express");
 const path = require("path");
 // npm package for generating a unique ID when the user submits a POST request
-const randNumGen = require("brorand");
+const {Random, MersenneTwister19937} = require("random-js");
 
 const { readFromFile, readAndAppend } = require("./helpers/fsUtils.js");
 
@@ -11,7 +11,7 @@ const PORT = process.env.port || 3001;
 
 const app = express();
 
-// app.use(randNumGen);
+// app.use(Random);
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
@@ -40,9 +40,28 @@ app.get("*", (req, res) =>
 // Referencing DU-VIRT-FSF-PT-12-2023-U-LOLC\11-Express\01-Activities\22-Stu_Modular-Routing
 app.post("/api/notes", (req, res) => {
     console.info(`Request received to POST to notes`)
-    console.log(req.body);
-    readAndAppend(req.body, "./db/db.json")
-})
+
+    const { title, text } = req.body;
+    if (title && text) {
+        const random = new Random(MersenneTwister19937.autoSeed());
+        const newNote = {
+            title, 
+            text, 
+            id: random.integer(1, 999999)
+        }
+
+        readAndAppend(newNote, "./db/db.json")
+
+        const response = {
+            status: "success", 
+            body: newNote,
+        };
+
+        res.json(response);
+    } else {
+        res.json("We're sorry, there was an error in posting a new note.")
+    }
+});
 
 app.listen(PORT, () =>
   console.log(`App listening at http://localhost:${PORT}`)
