@@ -36,9 +36,9 @@ form {
 
 .note-title {
   height: 50px;
+  font-size: 5.5vw;
   margin-top: 13px;
   padding-bottom: 13px;
-  font-size: 5.5vw;
 }
 
 .note-title:read-only,
@@ -80,4 +80,22 @@ form {
   border-right: none;
   padding: 20px;
   cursor: pointer;
+}
+
+@media screen and (min-width: 0px) {
+  .note-title {
+    font-size: 27px;
+  }
+}
+
+@media screen and (min-width: 660px) {
+  .note-title {
+    font-size: 35px;
+  }
+}
+
+@media screen and (min-width: 1000px) {
+  .note-title {
+    font-size: 45px;
+  }
 }
