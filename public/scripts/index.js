@@ -73,7 +73,6 @@ const deleteNote = (id) =>
 
 // If the activeNote object is not empty (so, when the user has clicked a note on the sidebar to view as the active note), the 'New Note' button will appear, and noteTitle and noteText will display the active note. If the activeNote object is empty, the 'New Note' button will be hidden and noteTitle and noteText will be empty, ready for the user's input. This view is used after the user has saved a note, after the user has deleted a note, and after the user has clicked the 'New Note' button.  
 const renderActiveNote = () => {
-  console.log(activeNote.id);
   hide(saveNoteBtn);
   hide(clearBtn);
 
