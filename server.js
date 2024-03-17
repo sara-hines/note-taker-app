@@ -48,7 +48,6 @@ app.post('/api/notes', (req, res) => {
     if (title && text) {
         // The below line creates an instance of random-js's Random function with the MersenneTwister19937 engine. The integer method will be used to generate a random number in the range [1, 999999].
         const random = new Random(MersenneTwister19937.autoSeed());
-        console.log(random.integer);
         const newNote = {
             title, 
             text, 

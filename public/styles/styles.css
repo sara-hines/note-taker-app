@@ -9,6 +9,10 @@ body {
   display: none;
 }
 
+form {
+  height: 80vh;
+}
+
 .icons {
   margin-left: 15px;
   margin-right: 15px;
@@ -33,7 +37,8 @@ body {
 .note-title {
   height: 50px;
   margin-top: 13px;
-  font-size: 3rem;
+  padding-bottom: 13px;
+  font-size: 5.5vw;
 }
 
 .note-title:read-only,
